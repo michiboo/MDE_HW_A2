@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated cryptoExchange -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="CryptoExchange.presentation.CryptoExchangeModelWizardID"
+            name="%_UI_CryptoExchangeModelWizard_label"
+            class="CryptoExchange.presentation.CryptoExchangeModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CryptoExchangeModelFile.gif">
+         <description>%_UI_CryptoExchangeModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated cryptoExchange -->
+      <editor
+            id="CryptoExchange.presentation.CryptoExchangeEditorID"
+            name="%_UI_CryptoExchangeEditor_label"
+            icon="icons/full/obj16/CryptoExchangeModelFile.gif"
+            extensions="cryptoexchange"
+            class="CryptoExchange.presentation.CryptoExchangeEditor"
+            contributorClass="CryptoExchange.presentation.CryptoExchangeActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated cryptoExchangeModel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="cryptoExchangePackage.presentation.CryptoExchangePackageModelWizardID"
+            name="%_UI_CryptoExchangePackageModelWizard_label"
+            class="cryptoExchangePackage.presentation.CryptoExchangePackageModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CryptoExchangePackageModelFile.gif">
+         <description>%_UI_CryptoExchangePackageModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated cryptoExchangeModel -->
+      <editor
+            id="cryptoExchangePackage.presentation.CryptoExchangePackageEditorID"
+            name="%_UI_CryptoExchangePackageEditor_label"
+            icon="icons/full/obj16/CryptoExchangePackageModelFile.gif"
+            extensions="cryptoexchangepackage"
+            class="cryptoExchangePackage.presentation.CryptoExchangePackageEditor"
+            contributorClass="cryptoExchangePackage.presentation.CryptoExchangePackageActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
