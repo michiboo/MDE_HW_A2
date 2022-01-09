@@ -63,6 +63,7 @@ public class SavingOrderItemProvider
 			addAmountPropertyDescriptor(object);
 			addMatureDatePropertyDescriptor(object);
 			addInterestPropertyDescriptor(object);
+			addAccountPropertyDescriptor(object);
 			addTokenPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -130,6 +131,28 @@ public class SavingOrderItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Account feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAccountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SavingOrder_account_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SavingOrder_account_feature", "_UI_SavingOrder_type"),
+				 CryptoExchangePackagePackage.Literals.SAVING_ORDER__ACCOUNT,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

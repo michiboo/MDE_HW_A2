@@ -31,6 +31,10 @@ public class CryptoExchangePackageTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new CryptoExchangePackageTests("cryptoExchangePackage Tests");
+		suite.addTestSuite(cryptoExchangeTest.class);
+		suite.addTestSuite(AccountTest.class);
+		suite.addTestSuite(OrderTest.class);
+		suite.addTestSuite(SubSystemTest.class);
 		return suite;
 	}
 

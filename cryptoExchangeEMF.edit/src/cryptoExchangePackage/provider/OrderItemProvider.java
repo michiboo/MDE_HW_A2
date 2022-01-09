@@ -88,7 +88,7 @@ public class OrderItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -244,8 +244,10 @@ public class OrderItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Order order = (Order)object;
-		return getString("_UI_Order_type") + " " + order.getID();
+		String label = ((Order)object).getID();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Order_type") :
+			getString("_UI_Order_type") + " " + label;
 	}
 
 

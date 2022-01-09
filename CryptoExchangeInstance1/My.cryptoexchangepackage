@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cryptoExchangePackage:cryptoExchange xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cryptoExchangePackage="https://cryptoExchangePackage/1.0">
-  <SubSystem/>
-  <SubSystem Name="Future"/>
+<cryptoExchangePackage:cryptoExchange xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cryptoExchangePackage="https://cryptoExchangePackage/1.0" IP="12.12.123.1" DomainName="cryptoExchangeOne.com" Name="CryptoExchangeOne ">
+  <SubSystem>
+    <accounts ID="1">
+      <TokensBalance balance="12.9" Token="//@Tokens.0"/>
+    </accounts>
+  </SubSystem>
+  <Tokens name="BitCoin" address="0x000001" decimal="2" TokenNetwork="//@TokenNetworks.0"/>
+  <Tokens name="USDC" address="0x00002" decimal="2" TokenNetwork="//@TokenNetworks.0"/>
+  <TokenNetworks chainID="12" RPC="https://EVM.org"/>
 </cryptoExchangePackage:cryptoExchange>

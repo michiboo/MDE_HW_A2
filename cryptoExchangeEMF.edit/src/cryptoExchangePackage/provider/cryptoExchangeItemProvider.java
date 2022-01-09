@@ -65,6 +65,7 @@ public class cryptoExchangeItemProvider
 
 			addIPPropertyDescriptor(object);
 			addDomainNamePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,6 +106,28 @@ public class cryptoExchangeItemProvider
 				 getString("_UI_cryptoExchange_DomainName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_cryptoExchange_DomainName_feature", "_UI_cryptoExchange_type"),
 				 CryptoExchangePackagePackage.Literals.CRYPTO_EXCHANGE__DOMAIN_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_cryptoExchange_Name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_cryptoExchange_Name_feature", "_UI_cryptoExchange_type"),
+				 CryptoExchangePackagePackage.Literals.CRYPTO_EXCHANGE__NAME,
 				 true,
 				 false,
 				 false,
@@ -164,7 +187,7 @@ public class cryptoExchangeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((cryptoExchange)object).getDomainName();
+		String label = ((cryptoExchange)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_cryptoExchange_type") :
 			getString("_UI_cryptoExchange_type") + " " + label;
@@ -185,6 +208,7 @@ public class cryptoExchangeItemProvider
 		switch (notification.getFeatureID(cryptoExchange.class)) {
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__IP:
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__DOMAIN_NAME:
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__SUB_SYSTEM:

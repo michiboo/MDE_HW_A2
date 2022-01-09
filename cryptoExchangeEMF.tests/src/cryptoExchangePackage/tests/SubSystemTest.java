@@ -13,6 +13,13 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Sub System</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link cryptoExchangePackage.SubSystem#getNextOrderId() <em>Get Next Order Id</em>}</li>
+ *   <li>{@link cryptoExchangePackage.SubSystem#checkOrderTypeConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Check Order Type Constraint</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class SubSystemTest extends TestCase {
@@ -84,6 +91,32 @@ public class SubSystemTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link cryptoExchangePackage.SubSystem#getNextOrderId() <em>Get Next Order Id</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see cryptoExchangePackage.SubSystem#getNextOrderId()
+	 * @generated
+	 */
+	public void testGetNextOrderId() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link cryptoExchangePackage.SubSystem#checkOrderTypeConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Check Order Type Constraint</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see cryptoExchangePackage.SubSystem#checkOrderTypeConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testCheckOrderTypeConstraint__DiagnosticChain_Map() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //SubSystemTest

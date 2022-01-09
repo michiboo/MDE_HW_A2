@@ -60,11 +60,34 @@ public class TokenItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 			addAddressPropertyDescriptor(object);
 			addDecimalPropertyDescriptor(object);
 			addTokenNetworkPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Token_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_name_feature", "_UI_Token_type"),
+				 CryptoExchangePackagePackage.Literals.TOKEN__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -152,7 +175,7 @@ public class TokenItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Token)object).getAddress();
+		String label = ((Token)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Token_type") :
 			getString("_UI_Token_type") + " " + label;
@@ -171,6 +194,7 @@ public class TokenItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Token.class)) {
+			case CryptoExchangePackagePackage.TOKEN__NAME:
 			case CryptoExchangePackagePackage.TOKEN__ADDRESS:
 			case CryptoExchangePackagePackage.TOKEN__DECIMAL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
