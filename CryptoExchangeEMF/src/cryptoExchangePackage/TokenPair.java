@@ -30,7 +30,7 @@ public interface TokenPair extends EObject {
 	 * @return the value of the '<em>Price</em>' attribute.
 	 * @see #setPrice(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getTokenPair_Price()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getPrice();

@@ -29,7 +29,7 @@ public interface TokenNetwork extends EObject {
 	 * @return the value of the '<em>Chain ID</em>' attribute.
 	 * @see #setChainID(int)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getTokenNetwork_ChainID()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getChainID();

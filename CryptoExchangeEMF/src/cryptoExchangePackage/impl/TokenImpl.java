@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link cryptoExchangePackage.impl.TokenImpl#getName <em>Name</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.TokenImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.TokenImpl#getDecimal <em>Decimal</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.TokenImpl#getTokenNetwork <em>Token Network</em>}</li>
@@ -30,6 +31,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -97,6 +118,27 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 	@Override
 	protected EClass eStaticClass() {
 		return CryptoExchangePackagePackage.Literals.TOKEN;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CryptoExchangePackagePackage.TOKEN__NAME, oldName, name));
 	}
 
 	/**
@@ -187,6 +229,8 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CryptoExchangePackagePackage.TOKEN__NAME:
+				return getName();
 			case CryptoExchangePackagePackage.TOKEN__ADDRESS:
 				return getAddress();
 			case CryptoExchangePackagePackage.TOKEN__DECIMAL:
@@ -206,6 +250,9 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CryptoExchangePackagePackage.TOKEN__NAME:
+				setName((String)newValue);
+				return;
 			case CryptoExchangePackagePackage.TOKEN__ADDRESS:
 				setAddress((String)newValue);
 				return;
@@ -227,6 +274,9 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CryptoExchangePackagePackage.TOKEN__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case CryptoExchangePackagePackage.TOKEN__ADDRESS:
 				setAddress(ADDRESS_EDEFAULT);
 				return;
@@ -248,6 +298,8 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CryptoExchangePackagePackage.TOKEN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CryptoExchangePackagePackage.TOKEN__ADDRESS:
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
 			case CryptoExchangePackagePackage.TOKEN__DECIMAL:
@@ -268,7 +320,9 @@ public class TokenImpl extends MinimalEObjectImpl.Container implements Token {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (address: ");
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", address: ");
 		result.append(address);
 		result.append(", decimal: ");
 		result.append(decimal);

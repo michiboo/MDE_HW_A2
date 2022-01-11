@@ -29,7 +29,7 @@ public interface TokenBalance extends EObject {
 	 * @return the value of the '<em>Balance</em>' attribute.
 	 * @see #setBalance(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getTokenBalance_Balance()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getBalance();

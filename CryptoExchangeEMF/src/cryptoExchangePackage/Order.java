@@ -2,6 +2,8 @@
  */
 package cryptoExchangePackage;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -23,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see cryptoExchangePackage.CryptoExchangePackagePackage#getOrder()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='checkAccountBalance'"
  * @generated
  */
 public interface Order extends EObject {
@@ -32,12 +34,12 @@ public interface Order extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>ID</em>' attribute.
-	 * @see #setID(int)
+	 * @see #setID(String)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getOrder_ID()
-	 * @model
+	 * @model required="true" volatile="true" derived="true"
 	 * @generated
 	 */
-	int getID();
+	String getID();
 
 	/**
 	 * Sets the value of the '{@link cryptoExchangePackage.Order#getID <em>ID</em>}' attribute.
@@ -47,7 +49,7 @@ public interface Order extends EObject {
 	 * @see #getID()
 	 * @generated
 	 */
-	void setID(int value);
+	void setID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Price</b></em>' attribute.
@@ -56,7 +58,7 @@ public interface Order extends EObject {
 	 * @return the value of the '<em>Price</em>' attribute.
 	 * @see #setPrice(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getOrder_Price()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getPrice();
@@ -78,7 +80,7 @@ public interface Order extends EObject {
 	 * @return the value of the '<em>Amount</em>' attribute.
 	 * @see #setAmount(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getOrder_Amount()
-	 * @model
+	 * @model required="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	float getAmount();
@@ -186,5 +188,13 @@ public interface Order extends EObject {
 	 * @generated
 	 */
 	void setTokenPair(TokenPair value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='if(self-&gt;notEmpty()) then\n\t\t\tself.account.TokensBalance-&gt;select(Token=self.TokenPair.TokenA)-&gt;forAll(balance  &lt;=  self.Amount)\n\t\telse \n\t\t\ttrue endif'"
+	 * @generated
+	 */
+	boolean checkAccountBalance(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Order

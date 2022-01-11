@@ -2,6 +2,7 @@
  */
 package cryptoExchangePackage.impl;
 
+import cryptoExchangePackage.Account;
 import cryptoExchangePackage.CryptoExchangePackagePackage;
 import cryptoExchangePackage.SavingOrder;
 import cryptoExchangePackage.Token;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link cryptoExchangePackage.impl.SavingOrderImpl#getAmount <em>Amount</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.SavingOrderImpl#getMatureDate <em>Mature Date</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.SavingOrderImpl#getInterest <em>Interest</em>}</li>
+ *   <li>{@link cryptoExchangePackage.impl.SavingOrderImpl#getAccount <em>Account</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.SavingOrderImpl#getToken <em>Token</em>}</li>
  * </ul>
  *
@@ -92,6 +94,16 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 	 * @ordered
 	 */
 	protected double interest = INTEREST_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAccount() <em>Account</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAccount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Account account;
 
 	/**
 	 * The cached value of the '{@link #getToken() <em>Token</em>}' reference.
@@ -190,6 +202,44 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Account getAccount() {
+		if (account != null && account.eIsProxy()) {
+			InternalEObject oldAccount = (InternalEObject)account;
+			account = (Account)eResolveProxy(oldAccount);
+			if (account != oldAccount) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT, oldAccount, account));
+			}
+		}
+		return account;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Account basicGetAccount() {
+		return account;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAccount(Account newAccount) {
+		Account oldAccount = account;
+		account = newAccount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT, oldAccount, account));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Token getToken() {
 		if (token != null && token.eIsProxy()) {
 			InternalEObject oldToken = (InternalEObject)token;
@@ -237,6 +287,9 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 				return getMatureDate();
 			case CryptoExchangePackagePackage.SAVING_ORDER__INTEREST:
 				return getInterest();
+			case CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT:
+				if (resolve) return getAccount();
+				return basicGetAccount();
 			case CryptoExchangePackagePackage.SAVING_ORDER__TOKEN:
 				if (resolve) return getToken();
 				return basicGetToken();
@@ -260,6 +313,9 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 				return;
 			case CryptoExchangePackagePackage.SAVING_ORDER__INTEREST:
 				setInterest((Double)newValue);
+				return;
+			case CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT:
+				setAccount((Account)newValue);
 				return;
 			case CryptoExchangePackagePackage.SAVING_ORDER__TOKEN:
 				setToken((Token)newValue);
@@ -285,6 +341,9 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 			case CryptoExchangePackagePackage.SAVING_ORDER__INTEREST:
 				setInterest(INTEREST_EDEFAULT);
 				return;
+			case CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT:
+				setAccount((Account)null);
+				return;
 			case CryptoExchangePackagePackage.SAVING_ORDER__TOKEN:
 				setToken((Token)null);
 				return;
@@ -306,6 +365,8 @@ public class SavingOrderImpl extends MinimalEObjectImpl.Container implements Sav
 				return MATURE_DATE_EDEFAULT == null ? matureDate != null : !MATURE_DATE_EDEFAULT.equals(matureDate);
 			case CryptoExchangePackagePackage.SAVING_ORDER__INTEREST:
 				return interest != INTEREST_EDEFAULT;
+			case CryptoExchangePackagePackage.SAVING_ORDER__ACCOUNT:
+				return account != null;
 			case CryptoExchangePackagePackage.SAVING_ORDER__TOKEN:
 				return token != null;
 		}

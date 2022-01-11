@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link cryptoExchangePackage.SavingOrder#getAmount <em>Amount</em>}</li>
  *   <li>{@link cryptoExchangePackage.SavingOrder#getMatureDate <em>Mature Date</em>}</li>
  *   <li>{@link cryptoExchangePackage.SavingOrder#getInterest <em>Interest</em>}</li>
+ *   <li>{@link cryptoExchangePackage.SavingOrder#getAccount <em>Account</em>}</li>
  *   <li>{@link cryptoExchangePackage.SavingOrder#getToken <em>Token</em>}</li>
  * </ul>
  *
@@ -33,7 +34,7 @@ public interface SavingOrder extends EObject {
 	 * @return the value of the '<em>Amount</em>' attribute.
 	 * @see #setAmount(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getSavingOrder_Amount()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getAmount();
@@ -77,7 +78,7 @@ public interface SavingOrder extends EObject {
 	 * @return the value of the '<em>Interest</em>' attribute.
 	 * @see #setInterest(double)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getSavingOrder_Interest()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	double getInterest();
@@ -91,6 +92,28 @@ public interface SavingOrder extends EObject {
 	 * @generated
 	 */
 	void setInterest(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Account</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Account</em>' reference.
+	 * @see #setAccount(Account)
+	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getSavingOrder_Account()
+	 * @model required="true"
+	 * @generated
+	 */
+	Account getAccount();
+
+	/**
+	 * Sets the value of the '{@link cryptoExchangePackage.SavingOrder#getAccount <em>Account</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Account</em>' reference.
+	 * @see #getAccount()
+	 * @generated
+	 */
+	void setAccount(Account value);
 
 	/**
 	 * Returns the value of the '<em><b>Token</b></em>' reference.

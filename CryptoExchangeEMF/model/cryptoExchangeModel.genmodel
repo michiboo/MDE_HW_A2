@@ -37,8 +37,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//cryptoExchange/Name"/>
     </genClasses>
     <genClasses ecoreClass="cryptoExchangeModel.ecore#//Account">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//Account/ID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//Account/TokensBalance"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//Account/transferRequest"/>
+      <genOperations ecoreOperation="cryptoExchangeModel.ecore#//Account/availableBalance">
+        <genParameters ecoreParameter="cryptoExchangeModel.ecore#//Account/availableBalance/fToken"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="cryptoExchangeModel.ecore#//Order">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//Order/ID"/>
@@ -53,6 +57,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//SavingOrder/Amount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//SavingOrder/MatureDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//SavingOrder/Interest"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//SavingOrder/account"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//SavingOrder/Token"/>
     </genClasses>
     <genClasses ecoreClass="cryptoExchangeModel.ecore#//SubSystem">
@@ -61,8 +66,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//SubSystem/TokenPairs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//SubSystem/Orders"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//SubSystem/SavingOrders"/>
+      <genOperations ecoreOperation="cryptoExchangeModel.ecore#//SubSystem/getNextOrderId"/>
     </genClasses>
     <genClasses ecoreClass="cryptoExchangeModel.ecore#//Token">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//Token/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//Token/address"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cryptoExchangeModel.ecore#//Token/decimal"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cryptoExchangeModel.ecore#//Token/TokenNetwork"/>

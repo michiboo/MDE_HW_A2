@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link cryptoExchangePackage.Token#getName <em>Name</em>}</li>
  *   <li>{@link cryptoExchangePackage.Token#getAddress <em>Address</em>}</li>
  *   <li>{@link cryptoExchangePackage.Token#getDecimal <em>Decimal</em>}</li>
  *   <li>{@link cryptoExchangePackage.Token#getTokenNetwork <em>Token Network</em>}</li>
@@ -23,6 +24,28 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Token extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getToken_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link cryptoExchangePackage.Token#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +75,7 @@ public interface Token extends EObject {
 	 * @return the value of the '<em>Decimal</em>' attribute.
 	 * @see #setDecimal(int)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getToken_Decimal()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getDecimal();

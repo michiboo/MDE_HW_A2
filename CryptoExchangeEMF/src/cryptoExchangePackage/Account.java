@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link cryptoExchangePackage.Account#getID <em>ID</em>}</li>
  *   <li>{@link cryptoExchangePackage.Account#getTokensBalance <em>Tokens Balance</em>}</li>
  *   <li>{@link cryptoExchangePackage.Account#getTransferRequest <em>Transfer Request</em>}</li>
  * </ul>
@@ -24,6 +25,28 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Account extends EObject {
+	/**
+	 * Returns the value of the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>ID</em>' attribute.
+	 * @see #setID(String)
+	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getAccount_ID()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getID();
+
+	/**
+	 * Sets the value of the '{@link cryptoExchangePackage.Account#getID <em>ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>ID</em>' attribute.
+	 * @see #getID()
+	 * @generated
+	 */
+	void setID(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Tokens Balance</b></em>' containment reference list.
 	 * The list contents are of type {@link cryptoExchangePackage.TokenBalance}.
@@ -47,5 +70,14 @@ public interface Account extends EObject {
 	 * @generated
 	 */
 	EList<TransferRequest> getTransferRequest();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" fTokenRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n \t\t\t if(not self.TokensBalance-&gt;select(Token = fToken)-&gt;isEmpty()) then\n \t\t\t\tself.TokensBalance-&gt;select(Token = fToken)-&gt;collect(balance)-&gt;sum().oclAsType(ecore::EFloat[1] )\n\t\t\t else\n\t\t\t \t0\n\t\t\t endif'"
+	 * @generated
+	 */
+	float availableBalance(Token fToken);
 
 } // Account

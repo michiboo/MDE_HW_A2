@@ -3,16 +3,22 @@
 package cryptoExchangePackage.impl;
 
 import cryptoExchangePackage.CryptoExchangePackagePackage;
+import cryptoExchangePackage.CryptoExchangePackageTables;
 import cryptoExchangePackage.SubSystem;
 import cryptoExchangePackage.Token;
 import cryptoExchangePackage.TokenNetwork;
 import cryptoExchangePackage.cryptoExchange;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +29,17 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SetValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +54,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link cryptoExchangePackage.impl.cryptoExchangeImpl#getSubSystem <em>Sub System</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.cryptoExchangeImpl#getTokens <em>Tokens</em>}</li>
  *   <li>{@link cryptoExchangePackage.impl.cryptoExchangeImpl#getTokenNetworks <em>Token Networks</em>}</li>
+ *   <li>{@link cryptoExchangePackage.impl.cryptoExchangeImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -111,6 +129,26 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<TokenNetwork> tokenNetworks;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +252,90 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean checkUniqueToken(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "cryptoExchange::checkUniqueToken";
+		try {
+			/**
+			 *
+			 * inv checkUniqueToken:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[1] = self.Tokens->isUnique(self)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this, context);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, CryptoExchangePackagePackage.Literals.CRYPTO_EXCHANGE___CHECK_UNIQUE_TOKEN__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, CryptoExchangePackageTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean symbol_0;
+			if (le) {
+				symbol_0 = true;
+			}
+			else {
+				final /*@NonInvalid*/ List<Token> Tokens = this.getTokens();
+				final /*@NonInvalid*/ OrderedSetValue BOXED_Tokens = idResolver.createOrderedSetOfAll(CryptoExchangePackageTables.ORD_CLSSid_Token, Tokens);
+				/*@Thrown*/ Accumulator accumulator = ValueUtil.createSetAccumulatorValue(CryptoExchangePackageTables.ORD_CLSSid_Token);
+				Iterator<Object> ITERATOR__1 = BOXED_Tokens.iterator();
+				/*@NonInvalid*/ boolean result;
+				while (true) {
+					if (!ITERATOR__1.hasNext()) {
+						result = true;
+						break;
+					}
+					/*@NonInvalid*/ Token _1 = (Token)ITERATOR__1.next();
+					/**
+					 * self
+					 */
+					//
+					if (accumulator.includes(this) == ValueUtil.TRUE_VALUE) {
+						result = false;
+						break;			// Abort after second find
+					}
+					else {
+						accumulator.add(this);
+					}
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, CryptoExchangePackageTables.INT_0).booleanValue();
+				symbol_0 = logDiagnostic;
+			}
+			return symbol_0;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -245,6 +367,8 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 				return getTokens();
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__TOKEN_NETWORKS:
 				return getTokenNetworks();
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -276,6 +400,9 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 				getTokenNetworks().clear();
 				getTokenNetworks().addAll((Collection<? extends TokenNetwork>)newValue);
 				return;
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -303,6 +430,9 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__TOKEN_NETWORKS:
 				getTokenNetworks().clear();
 				return;
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -325,8 +455,25 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 				return tokens != null && !tokens.isEmpty();
 			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__TOKEN_NETWORKS:
 				return tokenNetworks != null && !tokenNetworks.isEmpty();
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CryptoExchangePackagePackage.CRYPTO_EXCHANGE___CHECK_UNIQUE_TOKEN__DIAGNOSTICCHAIN_MAP:
+				return checkUniqueToken((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -343,6 +490,8 @@ public class cryptoExchangeImpl extends MinimalEObjectImpl.Container implements 
 		result.append(ip);
 		result.append(", DomainName: ");
 		result.append(domainName);
+		result.append(", Name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

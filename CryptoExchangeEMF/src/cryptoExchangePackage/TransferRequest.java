@@ -56,7 +56,7 @@ public interface TransferRequest extends EObject {
 	 * @return the value of the '<em>Amount</em>' attribute.
 	 * @see #setAmount(float)
 	 * @see cryptoExchangePackage.CryptoExchangePackagePackage#getTransferRequest_Amount()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getAmount();

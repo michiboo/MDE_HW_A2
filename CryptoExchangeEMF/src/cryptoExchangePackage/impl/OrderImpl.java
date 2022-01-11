@@ -4,18 +4,48 @@ package cryptoExchangePackage.impl;
 
 import cryptoExchangePackage.Account;
 import cryptoExchangePackage.CryptoExchangePackagePackage;
+import cryptoExchangePackage.CryptoExchangePackageTables;
 import cryptoExchangePackage.LeverageType;
 import cryptoExchangePackage.Order;
 import cryptoExchangePackage.OrderType;
+import cryptoExchangePackage.SubSystem;
+import cryptoExchangePackage.Token;
+import cryptoExchangePackage.TokenBalance;
 import cryptoExchangePackage.TokenPair;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.classifier.ClassifierOclContainerOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionNotEmptyOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableGreaterThanEqualOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclElementOclAsModelTypeOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.messages.PivotMessages;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator;
+import org.eclipse.ocl.pivot.values.RealValue;
+import org.eclipse.ocl.pivot.values.SetValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,17 +75,7 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ID_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getID()
-	 * @generated
-	 * @ordered
-	 */
-	protected int id = ID_EDEFAULT;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
@@ -86,16 +106,6 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * @ordered
 	 */
 	protected static final float AMOUNT_EDEFAULT = 0.0F;
-
-	/**
-	 * The cached value of the '{@link #getAmount() <em>Amount</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAmount()
-	 * @generated
-	 * @ordered
-	 */
-	protected float amount = AMOUNT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLeverage() <em>Leverage</em>}' attribute.
@@ -181,8 +191,20 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getID() {
-		return id;
+	public String getID() {
+		/**
+		 * self.oclContainer().oclAsModelType(SubSystem).getNextOrderId()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_cryptoExchangePackage_c_c_SubSystem_0 = idResolver.getClass(CryptoExchangePackageTables.CLSSid_SubSystem, null);
+		final /*@NonInvalid*/ Object oclContainer = ClassifierOclContainerOperation.INSTANCE.evaluate(executor, this);
+		if (oclContainer == null) {
+			throw new InvalidValueException("Null \'\'OclElement\'\' rather than \'\'OclVoid\'\' value required");
+		}
+		final /*@Thrown*/ SubSystem oclAsModelType = (SubSystem)OclElementOclAsModelTypeOperation.INSTANCE.evaluate(executor, oclContainer, TYP_cryptoExchangePackage_c_c_SubSystem_0);
+		final /*@Thrown*/ String getNextOrderId = oclAsModelType.getNextOrderId();
+		return getNextOrderId;
 	}
 
 	/**
@@ -190,11 +212,10 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setID(int newID) {
-		int oldID = id;
-		id = newID;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CryptoExchangePackagePackage.ORDER__ID, oldID, id));
+	public void setID(String newID) {
+		// TODO: implement this method to set the 'ID' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -224,7 +245,37 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * @generated
 	 */
 	public float getAmount() {
-		return amount;
+		/**
+		 *
+		 * if
+		 *   self.account.oclAsModelType(Account)
+		 *   .availableBalance(self.TokenPair.TokenA) >= Amount
+		 * then Amount
+		 * else
+		 *   self.account.oclAsModelType(Account)
+		 *   .availableBalance(self.TokenPair.TokenA)
+		 * endif
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ float Amount_0 = this.getAmount();
+		final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_cryptoExchangePackage_c_c_Account_1 = idResolver.getClass(CryptoExchangePackageTables.CLSSid_Account, null);
+		final /*@NonInvalid*/ TokenPair TokenPair_0 = this.getTokenPair();
+		final /*@NonInvalid*/ Account account_0 = this.getAccount();
+		final /*@NonInvalid*/ Token TokenA_0 = TokenPair_0.getTokenA();
+		final /*@Thrown*/ Account oclAsModelType_0 = (Account)OclElementOclAsModelTypeOperation.INSTANCE.evaluate(executor, account_0, TYP_cryptoExchangePackage_c_c_Account_1);
+		final /*@Thrown*/ float availableBalance_0 = oclAsModelType_0.availableBalance(TokenA_0);
+		final /*@Thrown*/ RealValue BOXED_availableBalance = ValueUtil.realValueOf(availableBalance_0);
+		final /*@NonInvalid*/ RealValue BOXED_Amount = ValueUtil.realValueOf(Amount_0);
+		final /*@Thrown*/ boolean ge = OclComparableGreaterThanEqualOperation.INSTANCE.evaluate(executor, BOXED_availableBalance, BOXED_Amount).booleanValue();
+		/*@Thrown*/ float symbol_0;
+		if (ge) {
+			symbol_0 = Amount_0;
+		}
+		else {
+			symbol_0 = availableBalance_0;
+		}
+		return symbol_0;
 	}
 
 	/**
@@ -233,10 +284,9 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * @generated
 	 */
 	public void setAmount(float newAmount) {
-		float oldAmount = amount;
-		amount = newAmount;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CryptoExchangePackagePackage.ORDER__AMOUNT, oldAmount, amount));
+		// TODO: implement this method to set the 'Amount' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -362,6 +412,119 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean checkAccountBalance(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Order::checkAccountBalance";
+		try {
+			/**
+			 *
+			 * inv checkAccountBalance:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = if self->notEmpty()
+			 *         then
+			 *           self.account.TokensBalance->select(Token = self.TokenPair.TokenA)
+			 *           ->forAll(balance <= self.Amount)
+			 *         else true
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this, context);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, CryptoExchangePackagePackage.Literals.ORDER___CHECK_ACCOUNT_BALANCE__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, CryptoExchangePackageTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean symbol_0;
+			if (le) {
+				symbol_0 = true;
+			}
+			else {
+				final /*@NonInvalid*/ SetValue oclAsSet = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor, CryptoExchangePackageTables.SET_CLSSid_Order, this);
+				final /*@NonInvalid*/ boolean notEmpty = CollectionNotEmptyOperation.INSTANCE.evaluate(oclAsSet).booleanValue();
+				/*@NonInvalid*/ Boolean result;
+				if (notEmpty) {
+					final /*@NonInvalid*/ Account account = this.getAccount();
+					final /*@NonInvalid*/ List<TokenBalance> TokensBalance = account.getTokensBalance();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_TokensBalance = idResolver.createOrderedSetOfAll(CryptoExchangePackageTables.ORD_CLSSid_TokenBalance, TokensBalance);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(CryptoExchangePackageTables.ORD_CLSSid_TokenBalance);
+					Iterator<Object> ITERATOR__1 = BOXED_TokensBalance.iterator();
+					/*@NonInvalid*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR__1.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ TokenBalance _1 = (TokenBalance)ITERATOR__1.next();
+						/**
+						 * Token = self.TokenPair.TokenA
+						 */
+						final /*@NonInvalid*/ Token Token = _1.getToken();
+						final /*@NonInvalid*/ TokenPair TokenPair = this.getTokenPair();
+						final /*@NonInvalid*/ Token TokenA = TokenPair.getTokenA();
+						final /*@NonInvalid*/ boolean eq = Token.equals(TokenA);
+						//
+						if (eq) {
+							accumulator.add(_1);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR__1_0 = select.iterator();
+					/*@NonInvalid*/ Boolean forAll;
+					while (true) {
+						if (!ITERATOR__1_0.hasNext()) {
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								forAll = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ TokenBalance _1_0 = (TokenBalance)ITERATOR__1_0.next();
+						/**
+						 * balance <= self.Amount
+						 */
+						final /*@NonInvalid*/ float balance = _1_0.getBalance();
+						final /*@NonInvalid*/ RealValue BOXED_balance = ValueUtil.realValueOf(balance);
+						final /*@NonInvalid*/ float Amount = this.getAmount();
+						final /*@NonInvalid*/ RealValue BOXED_Amount = ValueUtil.realValueOf(Amount);
+						final /*@NonInvalid*/ boolean le_0 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_balance, BOXED_Amount).booleanValue();
+						//
+						if (!le_0) {					// Normal unsuccessful body evaluation result
+							forAll = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (le_0) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					result = forAll;
+				}
+				else {
+					result = ValueUtil.TRUE_VALUE;
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, CryptoExchangePackageTables.INT_0).booleanValue();
+				symbol_0 = logDiagnostic;
+			}
+			return symbol_0;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -394,7 +557,7 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CryptoExchangePackagePackage.ORDER__ID:
-				setID((Integer)newValue);
+				setID((String)newValue);
 				return;
 			case CryptoExchangePackagePackage.ORDER__PRICE:
 				setPrice((Float)newValue);
@@ -460,11 +623,11 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CryptoExchangePackagePackage.ORDER__ID:
-				return id != ID_EDEFAULT;
+				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
 			case CryptoExchangePackagePackage.ORDER__PRICE:
 				return price != PRICE_EDEFAULT;
 			case CryptoExchangePackagePackage.ORDER__AMOUNT:
-				return amount != AMOUNT_EDEFAULT;
+				return getAmount() != AMOUNT_EDEFAULT;
 			case CryptoExchangePackagePackage.ORDER__LEVERAGE:
 				return leverage != LEVERAGE_EDEFAULT;
 			case CryptoExchangePackagePackage.ORDER__TYPE:
@@ -483,16 +646,27 @@ public class OrderImpl extends MinimalEObjectImpl.Container implements Order {
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CryptoExchangePackagePackage.ORDER___CHECK_ACCOUNT_BALANCE__DIAGNOSTICCHAIN_MAP:
+				return checkAccountBalance((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (ID: ");
-		result.append(id);
-		result.append(", Price: ");
+		result.append(" (Price: ");
 		result.append(price);
-		result.append(", Amount: ");
-		result.append(amount);
 		result.append(", leverage: ");
 		result.append(leverage);
 		result.append(", Type: ");

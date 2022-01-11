@@ -19,12 +19,16 @@ import cryptoExchangePackage.TransferRequest;
 import cryptoExchangePackage.TransferType;
 import cryptoExchangePackage.cryptoExchange;
 
+import cryptoExchangePackage.util.CryptoExchangePackageValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -185,6 +189,15 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 		// Initialize created meta-data
 		theCryptoExchangePackagePackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theCryptoExchangePackagePackage,
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return CryptoExchangePackageValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theCryptoExchangePackagePackage.freeze();
 
@@ -252,6 +265,24 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getcryptoExchange_Name() {
+		return (EAttribute)cryptoExchangeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getcryptoExchange__CheckUniqueToken__DiagnosticChain_Map() {
+		return cryptoExchangeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAccount() {
 		return accountEClass;
 	}
@@ -261,8 +292,17 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAccount_ID() {
+		return (EAttribute)accountEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAccount_TokensBalance() {
-		return (EReference)accountEClass.getEStructuralFeatures().get(0);
+		return (EReference)accountEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -271,7 +311,16 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * @generated
 	 */
 	public EReference getAccount_TransferRequest() {
-		return (EReference)accountEClass.getEStructuralFeatures().get(1);
+		return (EReference)accountEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAccount__AvailableBalance__Token() {
+		return accountEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -351,6 +400,15 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getOrder__CheckAccountBalance__DiagnosticChain_Map() {
+		return orderEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSavingOrder() {
 		return savingOrderEClass;
 	}
@@ -387,8 +445,17 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSavingOrder_Token() {
+	public EReference getSavingOrder_Account() {
 		return (EReference)savingOrderEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSavingOrder_Token() {
+		return (EReference)savingOrderEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -450,6 +517,24 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSubSystem__GetNextOrderId() {
+		return subSystemEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSubSystem__CheckOrderTypeConstraint__DiagnosticChain_Map() {
+		return subSystemEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getToken() {
 		return tokenEClass;
 	}
@@ -459,7 +544,7 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToken_Address() {
+	public EAttribute getToken_Name() {
 		return (EAttribute)tokenEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -468,7 +553,7 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getToken_Decimal() {
+	public EAttribute getToken_Address() {
 		return (EAttribute)tokenEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -477,8 +562,17 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getToken_Decimal() {
+		return (EAttribute)tokenEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getToken_TokenNetwork() {
-		return (EReference)tokenEClass.getEStructuralFeatures().get(2);
+		return (EReference)tokenEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -686,10 +780,14 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 		createEReference(cryptoExchangeEClass, CRYPTO_EXCHANGE__SUB_SYSTEM);
 		createEReference(cryptoExchangeEClass, CRYPTO_EXCHANGE__TOKENS);
 		createEReference(cryptoExchangeEClass, CRYPTO_EXCHANGE__TOKEN_NETWORKS);
+		createEAttribute(cryptoExchangeEClass, CRYPTO_EXCHANGE__NAME);
+		createEOperation(cryptoExchangeEClass, CRYPTO_EXCHANGE___CHECK_UNIQUE_TOKEN__DIAGNOSTICCHAIN_MAP);
 
 		accountEClass = createEClass(ACCOUNT);
+		createEAttribute(accountEClass, ACCOUNT__ID);
 		createEReference(accountEClass, ACCOUNT__TOKENS_BALANCE);
 		createEReference(accountEClass, ACCOUNT__TRANSFER_REQUEST);
+		createEOperation(accountEClass, ACCOUNT___AVAILABLE_BALANCE__TOKEN);
 
 		orderEClass = createEClass(ORDER);
 		createEAttribute(orderEClass, ORDER__ID);
@@ -699,11 +797,13 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 		createEAttribute(orderEClass, ORDER__TYPE);
 		createEReference(orderEClass, ORDER__ACCOUNT);
 		createEReference(orderEClass, ORDER__TOKEN_PAIR);
+		createEOperation(orderEClass, ORDER___CHECK_ACCOUNT_BALANCE__DIAGNOSTICCHAIN_MAP);
 
 		savingOrderEClass = createEClass(SAVING_ORDER);
 		createEAttribute(savingOrderEClass, SAVING_ORDER__AMOUNT);
 		createEAttribute(savingOrderEClass, SAVING_ORDER__MATURE_DATE);
 		createEAttribute(savingOrderEClass, SAVING_ORDER__INTEREST);
+		createEReference(savingOrderEClass, SAVING_ORDER__ACCOUNT);
 		createEReference(savingOrderEClass, SAVING_ORDER__TOKEN);
 
 		subSystemEClass = createEClass(SUB_SYSTEM);
@@ -712,8 +812,11 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 		createEReference(subSystemEClass, SUB_SYSTEM__TOKEN_PAIRS);
 		createEReference(subSystemEClass, SUB_SYSTEM__ORDERS);
 		createEReference(subSystemEClass, SUB_SYSTEM__SAVING_ORDERS);
+		createEOperation(subSystemEClass, SUB_SYSTEM___GET_NEXT_ORDER_ID);
+		createEOperation(subSystemEClass, SUB_SYSTEM___CHECK_ORDER_TYPE_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
 
 		tokenEClass = createEClass(TOKEN);
+		createEAttribute(tokenEClass, TOKEN__NAME);
 		createEAttribute(tokenEClass, TOKEN__ADDRESS);
 		createEAttribute(tokenEClass, TOKEN__DECIMAL);
 		createEReference(tokenEClass, TOKEN__TOKEN_NETWORK);
@@ -780,54 +883,90 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 		initEReference(getcryptoExchange_SubSystem(), this.getSubSystem(), null, "SubSystem", null, 1, -1, cryptoExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getcryptoExchange_Tokens(), this.getToken(), null, "Tokens", null, 1, -1, cryptoExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getcryptoExchange_TokenNetworks(), this.getTokenNetwork(), null, "TokenNetworks", null, 1, -1, cryptoExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getcryptoExchange_Name(), ecorePackage.getEString(), "Name", null, 0, 1, cryptoExchange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = initEOperation(getcryptoExchange__CheckUniqueToken__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "checkUniqueToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(accountEClass, Account.class, "Account", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAccount_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Account.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAccount_TokensBalance(), this.getTokenBalance(), null, "TokensBalance", null, 0, -1, Account.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAccount_TransferRequest(), this.getTransferRequest(), null, "transferRequest", null, 0, -1, Account.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getAccount__AvailableBalance__Token(), ecorePackage.getEFloat(), "availableBalance", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getToken(), "fToken", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOrder_ID(), ecorePackage.getEInt(), "ID", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrder_Price(), ecorePackage.getEFloat(), "Price", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrder_Amount(), ecorePackage.getEFloat(), "Amount", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Order.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_Price(), ecorePackage.getEFloat(), "Price", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_Amount(), ecorePackage.getEFloat(), "Amount", null, 1, 1, Order.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Leverage(), this.getLeverageType(), "leverage", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Type(), this.getOrderType(), "Type", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrder_Account(), this.getAccount(), null, "account", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrder_TokenPair(), this.getTokenPair(), null, "TokenPair", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getOrder__CheckAccountBalance__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "checkAccountBalance", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(savingOrderEClass, SavingOrder.class, "SavingOrder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSavingOrder_Amount(), ecorePackage.getEFloat(), "Amount", null, 0, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSavingOrder_Amount(), ecorePackage.getEFloat(), "Amount", null, 1, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSavingOrder_MatureDate(), ecorePackage.getEDate(), "MatureDate", null, 0, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSavingOrder_Interest(), ecorePackage.getEDouble(), "Interest", null, 0, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSavingOrder_Interest(), ecorePackage.getEDouble(), "Interest", null, 1, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSavingOrder_Account(), this.getAccount(), null, "account", null, 1, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSavingOrder_Token(), this.getToken(), null, "Token", null, 1, 1, SavingOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subSystemEClass, SubSystem.class, "SubSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSubSystem_Name(), this.getSubSystemName(), "Name", null, 0, 1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubSystem_Accounts(), this.getAccount(), null, "accounts", null, 0, -1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubSystem_TokenPairs(), this.getTokenPair(), null, "TokenPairs", null, 0, -1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSubSystem_Orders(), this.getOrder(), null, "Orders", null, 0, -1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubSystem_Orders(), this.getOrder(), null, "Orders", null, 0, -1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubSystem_SavingOrders(), this.getSavingOrder(), null, "SavingOrders", null, 0, -1, SubSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getSubSystem__GetNextOrderId(), ecorePackage.getEString(), "getNextOrderId", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSubSystem__CheckOrderTypeConstraint__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "checkOrderTypeConstraint", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getToken_Name(), ecorePackage.getEString(), "name", null, 1, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getToken_Address(), ecorePackage.getEString(), "address", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getToken_Decimal(), ecorePackage.getEInt(), "decimal", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getToken_Decimal(), ecorePackage.getEInt(), "decimal", null, 1, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getToken_TokenNetwork(), this.getTokenNetwork(), null, "TokenNetwork", null, 1, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenBalanceEClass, TokenBalance.class, "TokenBalance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTokenBalance_Balance(), ecorePackage.getEFloat(), "balance", null, 0, 1, TokenBalance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTokenBalance_Balance(), ecorePackage.getEFloat(), "balance", null, 1, 1, TokenBalance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTokenBalance_Token(), this.getToken(), null, "Token", null, 1, 1, TokenBalance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenNetworkEClass, TokenNetwork.class, "TokenNetwork", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTokenNetwork_ChainID(), ecorePackage.getEInt(), "chainID", null, 0, 1, TokenNetwork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTokenNetwork_ChainID(), ecorePackage.getEInt(), "chainID", null, 1, 1, TokenNetwork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTokenNetwork_RPC(), ecorePackage.getEString(), "RPC", null, 0, 1, TokenNetwork.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tokenPairEClass, TokenPair.class, "TokenPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTokenPair_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, TokenPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTokenPair_Price(), ecorePackage.getEFloat(), "price", null, 1, 1, TokenPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTokenPair_TokenA(), this.getToken(), null, "TokenA", null, 1, 1, TokenPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTokenPair_TokenB(), this.getToken(), null, "TokenB", null, 1, 1, TokenPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transferRequestEClass, TransferRequest.class, "TransferRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransferRequest_Type(), this.getTransferType(), "type", null, 0, 1, TransferRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferRequest_Amount(), ecorePackage.getEFloat(), "amount", null, 0, 1, TransferRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferRequest_Amount(), ecorePackage.getEFloat(), "amount", null, 1, 1, TransferRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransferRequest_Token(), this.getToken(), null, "Token", null, 1, 1, TransferRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransferRequest_Destination(), this.getAccount(), null, "Destination", null, 1, 1, TransferRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -856,6 +995,85 @@ public class CryptoExchangePackagePackageImpl extends EPackageImpl implements Cr
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (cryptoExchangeEClass,
+		   source,
+		   new String[] {
+			   "constraints", "checkUniqueToken"
+		   });
+		addAnnotation
+		  (orderEClass,
+		   source,
+		   new String[] {
+			   "constraints", "checkAccountBalance"
+		   });
+		addAnnotation
+		  (subSystemEClass,
+		   source,
+		   new String[] {
+			   "constraints", "checkOrderTypeConstraint"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (getcryptoExchange__CheckUniqueToken__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "self.Tokens->isUnique(self)"
+		   });
+		addAnnotation
+		  (getAccount__AvailableBalance__Token(),
+		   source,
+		   new String[] {
+			   "body", "\n \t\t\t if(not self.TokensBalance->select(Token = fToken)->isEmpty()) then\n \t\t\t\tself.TokensBalance->select(Token = fToken)->collect(balance)->sum().oclAsType(ecore::EFloat[1] )\n\t\t\t else\n\t\t\t \t0\n\t\t\t endif"
+		   });
+		addAnnotation
+		  (getOrder__CheckAccountBalance__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "if(self->notEmpty()) then\n\t\t\tself.account.TokensBalance->select(Token=self.TokenPair.TokenA)->forAll(balance  <=  self.Amount)\n\t\telse \n\t\t\ttrue endif"
+		   });
+		addAnnotation
+		  (getSubSystem__GetNextOrderId(),
+		   source,
+		   new String[] {
+			   "body", "\'0x\' + (Orders->size() + 1).toString()"
+		   });
+		addAnnotation
+		  (getSubSystem__CheckOrderTypeConstraint__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "(self.SavingOrders->size() > 0 and self.Name.toString() = \'Saving\') or (self.SavingOrders->size() = 0 and self.Name.toString() <> \'Saving\')"
+		   });
 	}
 
 } //CryptoExchangePackagePackageImpl

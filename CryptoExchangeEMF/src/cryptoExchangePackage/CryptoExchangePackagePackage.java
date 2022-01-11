@@ -5,6 +5,7 @@ package cryptoExchangePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see cryptoExchangePackage.CryptoExchangePackageFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface CryptoExchangePackagePackage extends EPackage {
@@ -113,13 +115,31 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int CRYPTO_EXCHANGE__TOKEN_NETWORKS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CRYPTO_EXCHANGE__NAME = 5;
+
+	/**
 	 * The number of structural features of the '<em>crypto Exchange</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRYPTO_EXCHANGE_FEATURE_COUNT = 5;
+	int CRYPTO_EXCHANGE_FEATURE_COUNT = 6;
+
+	/**
+	 * The operation id for the '<em>Check Unique Token</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CRYPTO_EXCHANGE___CHECK_UNIQUE_TOKEN__DIAGNOSTICCHAIN_MAP = 0;
 
 	/**
 	 * The number of operations of the '<em>crypto Exchange</em>' class.
@@ -128,7 +148,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CRYPTO_EXCHANGE_OPERATION_COUNT = 0;
+	int CRYPTO_EXCHANGE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link cryptoExchangePackage.impl.AccountImpl <em>Account</em>}' class.
@@ -141,13 +161,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int ACCOUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCOUNT__ID = 0;
+
+	/**
 	 * The feature id for the '<em><b>Tokens Balance</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACCOUNT__TOKENS_BALANCE = 0;
+	int ACCOUNT__TOKENS_BALANCE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Transfer Request</b></em>' containment reference list.
@@ -156,7 +185,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCOUNT__TRANSFER_REQUEST = 1;
+	int ACCOUNT__TRANSFER_REQUEST = 2;
 
 	/**
 	 * The number of structural features of the '<em>Account</em>' class.
@@ -165,7 +194,16 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCOUNT_FEATURE_COUNT = 2;
+	int ACCOUNT_FEATURE_COUNT = 3;
+
+	/**
+	 * The operation id for the '<em>Available Balance</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCOUNT___AVAILABLE_BALANCE__TOKEN = 0;
 
 	/**
 	 * The number of operations of the '<em>Account</em>' class.
@@ -174,7 +212,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCOUNT_OPERATION_COUNT = 0;
+	int ACCOUNT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link cryptoExchangePackage.impl.OrderImpl <em>Order</em>}' class.
@@ -259,13 +297,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int ORDER_FEATURE_COUNT = 7;
 
 	/**
+	 * The operation id for the '<em>Check Account Balance</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER___CHECK_ACCOUNT_BALANCE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Order</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_OPERATION_COUNT = 0;
+	int ORDER_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link cryptoExchangePackage.impl.SavingOrderImpl <em>Saving Order</em>}' class.
@@ -305,13 +352,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int SAVING_ORDER__INTEREST = 2;
 
 	/**
+	 * The feature id for the '<em><b>Account</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVING_ORDER__ACCOUNT = 3;
+
+	/**
 	 * The feature id for the '<em><b>Token</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SAVING_ORDER__TOKEN = 3;
+	int SAVING_ORDER__TOKEN = 4;
 
 	/**
 	 * The number of structural features of the '<em>Saving Order</em>' class.
@@ -320,7 +376,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SAVING_ORDER_FEATURE_COUNT = 4;
+	int SAVING_ORDER_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Saving Order</em>' class.
@@ -369,7 +425,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int SUB_SYSTEM__TOKEN_PAIRS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Orders</b></em>' reference list.
+	 * The feature id for the '<em><b>Orders</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -396,13 +452,31 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int SUB_SYSTEM_FEATURE_COUNT = 5;
 
 	/**
+	 * The operation id for the '<em>Get Next Order Id</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_SYSTEM___GET_NEXT_ORDER_ID = 0;
+
+	/**
+	 * The operation id for the '<em>Check Order Type Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_SYSTEM___CHECK_ORDER_TYPE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
 	 * The number of operations of the '<em>Sub System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUB_SYSTEM_OPERATION_COUNT = 0;
+	int SUB_SYSTEM_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link cryptoExchangePackage.impl.TokenImpl <em>Token</em>}' class.
@@ -415,13 +489,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	int TOKEN = 5;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOKEN__NAME = 0;
+
+	/**
 	 * The feature id for the '<em><b>Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN__ADDRESS = 0;
+	int TOKEN__ADDRESS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Decimal</b></em>' attribute.
@@ -430,7 +513,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN__DECIMAL = 1;
+	int TOKEN__DECIMAL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Token Network</b></em>' reference.
@@ -439,7 +522,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN__TOKEN_NETWORK = 2;
+	int TOKEN__TOKEN_NETWORK = 3;
 
 	/**
 	 * The number of structural features of the '<em>Token</em>' class.
@@ -448,7 +531,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN_FEATURE_COUNT = 3;
+	int TOKEN_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Token</em>' class.
@@ -777,6 +860,27 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	EReference getcryptoExchange_TokenNetworks();
 
 	/**
+	 * Returns the meta object for the attribute '{@link cryptoExchangePackage.cryptoExchange#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see cryptoExchangePackage.cryptoExchange#getName()
+	 * @see #getcryptoExchange()
+	 * @generated
+	 */
+	EAttribute getcryptoExchange_Name();
+
+	/**
+	 * Returns the meta object for the '{@link cryptoExchangePackage.cryptoExchange#checkUniqueToken(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Check Unique Token</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Check Unique Token</em>' operation.
+	 * @see cryptoExchangePackage.cryptoExchange#checkUniqueToken(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getcryptoExchange__CheckUniqueToken__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link cryptoExchangePackage.Account <em>Account</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -785,6 +889,17 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAccount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link cryptoExchangePackage.Account#getID <em>ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>ID</em>'.
+	 * @see cryptoExchangePackage.Account#getID()
+	 * @see #getAccount()
+	 * @generated
+	 */
+	EAttribute getAccount_ID();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link cryptoExchangePackage.Account#getTokensBalance <em>Tokens Balance</em>}'.
@@ -807,6 +922,16 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAccount_TransferRequest();
+
+	/**
+	 * Returns the meta object for the '{@link cryptoExchangePackage.Account#availableBalance(cryptoExchangePackage.Token) <em>Available Balance</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Available Balance</em>' operation.
+	 * @see cryptoExchangePackage.Account#availableBalance(cryptoExchangePackage.Token)
+	 * @generated
+	 */
+	EOperation getAccount__AvailableBalance__Token();
 
 	/**
 	 * Returns the meta object for class '{@link cryptoExchangePackage.Order <em>Order</em>}'.
@@ -896,6 +1021,16 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	EReference getOrder_TokenPair();
 
 	/**
+	 * Returns the meta object for the '{@link cryptoExchangePackage.Order#checkAccountBalance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Check Account Balance</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Check Account Balance</em>' operation.
+	 * @see cryptoExchangePackage.Order#checkAccountBalance(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getOrder__CheckAccountBalance__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link cryptoExchangePackage.SavingOrder <em>Saving Order</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -937,6 +1072,17 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSavingOrder_Interest();
+
+	/**
+	 * Returns the meta object for the reference '{@link cryptoExchangePackage.SavingOrder#getAccount <em>Account</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Account</em>'.
+	 * @see cryptoExchangePackage.SavingOrder#getAccount()
+	 * @see #getSavingOrder()
+	 * @generated
+	 */
+	EReference getSavingOrder_Account();
 
 	/**
 	 * Returns the meta object for the reference '{@link cryptoExchangePackage.SavingOrder#getToken <em>Token</em>}'.
@@ -993,10 +1139,10 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	EReference getSubSystem_TokenPairs();
 
 	/**
-	 * Returns the meta object for the reference list '{@link cryptoExchangePackage.SubSystem#getOrders <em>Orders</em>}'.
+	 * Returns the meta object for the containment reference list '{@link cryptoExchangePackage.SubSystem#getOrders <em>Orders</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Orders</em>'.
+	 * @return the meta object for the containment reference list '<em>Orders</em>'.
 	 * @see cryptoExchangePackage.SubSystem#getOrders()
 	 * @see #getSubSystem()
 	 * @generated
@@ -1015,6 +1161,26 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	EReference getSubSystem_SavingOrders();
 
 	/**
+	 * Returns the meta object for the '{@link cryptoExchangePackage.SubSystem#getNextOrderId() <em>Get Next Order Id</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Next Order Id</em>' operation.
+	 * @see cryptoExchangePackage.SubSystem#getNextOrderId()
+	 * @generated
+	 */
+	EOperation getSubSystem__GetNextOrderId();
+
+	/**
+	 * Returns the meta object for the '{@link cryptoExchangePackage.SubSystem#checkOrderTypeConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Check Order Type Constraint</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Check Order Type Constraint</em>' operation.
+	 * @see cryptoExchangePackage.SubSystem#checkOrderTypeConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getSubSystem__CheckOrderTypeConstraint__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link cryptoExchangePackage.Token <em>Token</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1023,6 +1189,17 @@ public interface CryptoExchangePackagePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getToken();
+
+	/**
+	 * Returns the meta object for the attribute '{@link cryptoExchangePackage.Token#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see cryptoExchangePackage.Token#getName()
+	 * @see #getToken()
+	 * @generated
+	 */
+	EAttribute getToken_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link cryptoExchangePackage.Token#getAddress <em>Address</em>}'.
@@ -1332,6 +1509,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		EReference CRYPTO_EXCHANGE__TOKEN_NETWORKS = eINSTANCE.getcryptoExchange_TokenNetworks();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CRYPTO_EXCHANGE__NAME = eINSTANCE.getcryptoExchange_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Check Unique Token</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CRYPTO_EXCHANGE___CHECK_UNIQUE_TOKEN__DIAGNOSTICCHAIN_MAP = eINSTANCE.getcryptoExchange__CheckUniqueToken__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link cryptoExchangePackage.impl.AccountImpl <em>Account</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1340,6 +1533,14 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACCOUNT = eINSTANCE.getAccount();
+
+		/**
+		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACCOUNT__ID = eINSTANCE.getAccount_ID();
 
 		/**
 		 * The meta object literal for the '<em><b>Tokens Balance</b></em>' containment reference list feature.
@@ -1356,6 +1557,14 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACCOUNT__TRANSFER_REQUEST = eINSTANCE.getAccount_TransferRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Available Balance</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACCOUNT___AVAILABLE_BALANCE__TOKEN = eINSTANCE.getAccount__AvailableBalance__Token();
 
 		/**
 		 * The meta object literal for the '{@link cryptoExchangePackage.impl.OrderImpl <em>Order</em>}' class.
@@ -1424,6 +1633,14 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		EReference ORDER__TOKEN_PAIR = eINSTANCE.getOrder_TokenPair();
 
 		/**
+		 * The meta object literal for the '<em><b>Check Account Balance</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ORDER___CHECK_ACCOUNT_BALANCE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getOrder__CheckAccountBalance__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link cryptoExchangePackage.impl.SavingOrderImpl <em>Saving Order</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1456,6 +1673,14 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SAVING_ORDER__INTEREST = eINSTANCE.getSavingOrder_Interest();
+
+		/**
+		 * The meta object literal for the '<em><b>Account</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SAVING_ORDER__ACCOUNT = eINSTANCE.getSavingOrder_Account();
 
 		/**
 		 * The meta object literal for the '<em><b>Token</b></em>' reference feature.
@@ -1500,7 +1725,7 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		EReference SUB_SYSTEM__TOKEN_PAIRS = eINSTANCE.getSubSystem_TokenPairs();
 
 		/**
-		 * The meta object literal for the '<em><b>Orders</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Orders</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1516,6 +1741,22 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		EReference SUB_SYSTEM__SAVING_ORDERS = eINSTANCE.getSubSystem_SavingOrders();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Next Order Id</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUB_SYSTEM___GET_NEXT_ORDER_ID = eINSTANCE.getSubSystem__GetNextOrderId();
+
+		/**
+		 * The meta object literal for the '<em><b>Check Order Type Constraint</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUB_SYSTEM___CHECK_ORDER_TYPE_CONSTRAINT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getSubSystem__CheckOrderTypeConstraint__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link cryptoExchangePackage.impl.TokenImpl <em>Token</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1524,6 +1765,14 @@ public interface CryptoExchangePackagePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TOKEN = eINSTANCE.getToken();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOKEN__NAME = eINSTANCE.getToken_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Address</b></em>' attribute feature.

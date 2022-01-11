@@ -7,11 +7,11 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated cryptoExchange -->
+      <!-- @generated cryptoExchangeModel -->
       <package
-            uri="https://CryptoExchange/1.0"
-            class="CryptoExchange.CryptoExchangePackage"
-            genModel="model/cryptoExchange.genmodel"/>
+            uri="https://cryptoExchangePackage/1.0"
+            class="cryptoExchangePackage.CryptoExchangePackagePackage"
+            genModel="model/cryptoExchangeModel.genmodel"/>
    </extension>
 
 </plugin>
