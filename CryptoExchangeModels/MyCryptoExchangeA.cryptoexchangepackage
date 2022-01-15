@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cryptoExchangePackage:cryptoExchange xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cryptoExchangePackage="https://cryptoExchangePackage/1.0" IP="cryptoexchangeA.com" DomainName="cryptoChangeA" Name="CryptoExchangeA">
+  <SubSystem>
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_1">
+      <TokensBalance balance="10.0" Token="USDC"/>
+      <transferRequest amount="1.0" Token="USDC" Destination="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_1"/>
+    </accounts>
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_2"/>
+    <TokenPairs Name="Bitcoin / USDC" price="42000.0" TokenA="Bitcoin" TokenB="USDC"/>
+    <Orders ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Order_1" Price="43000.0" Amount="10.0" account="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_2" TokenPair="Bitcoin / USDC"/>
+  </SubSystem>
+  <SubSystem Name="Saving">
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Saving_Account_1">
+      <TokensBalance balance="10000.0" Token="USDC"/>
+    </accounts>
+    <SavingOrders Amount="10000.0" MatureDate="0037-06-13T00:00:00.000+0200" Interest="1.5" account="'https://cryptoExchangePackage/1.0'::SubSystemName::Saving_Account_1" Token="USDC"/>
+  </SubSystem>
+  <Tokens name="Bitcoin" address="0x0012" decimal="1" TokenNetwork="EVM"/>
+  <Tokens name="USDC" address="0x001231312" decimal="1" TokenNetwork="EVM"/>
+  <TokenNetworks Name="EVM" chainID="12" RPC="https://EVM.org"/>
+</cryptoExchangePackage:cryptoExchange>

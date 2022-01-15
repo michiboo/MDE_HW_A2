@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cryptoExchangePackage:cryptoExchange xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cryptoExchangePackage="https://cryptoExchangePackage/1.0" IP="1.0.10.01.0" DomainName="crytoExchangeB.com" Name="CryptoExchange B">
+  <SubSystem>
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_1">
+      <TokensBalance balance="9.9999998E12" Token="DogeCoin"/>
+      <TokensBalance balance="1.0E25" Token="Shiba"/>
+      <transferRequest amount="1.0E10" Token="Shiba" Destination="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_2"/>
+    </accounts>
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_2"/>
+    <TokenPairs Name="DogeCoin / Shiba" price="132.0" TokenA="DogeCoin" TokenB="Shiba"/>
+    <Orders ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Order_1" Price="2.0" Amount="100000.0" Type="sell" account="'https://cryptoExchangePackage/1.0'::SubSystemName::Spot_Account_1" TokenPair="DogeCoin / Shiba"/>
+  </SubSystem>
+  <SubSystem Name="Margin">
+    <accounts ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Margin_Account_1">
+      <TokensBalance balance="1.0E9" Token="DogeCoin"/>
+    </accounts>
+    <Orders ID="'https://cryptoExchangePackage/1.0'::SubSystemName::Margin_Order_1" Price="100000.0" Type="leverageLong" account="'https://cryptoExchangePackage/1.0'::SubSystemName::Margin_Account_1" TokenPair="DogeCoin / Shiba"/>
+  </SubSystem>
+  <Tokens name="DogeCoin" address="0xdoge" decimal="2" TokenNetwork="DogeNetwork"/>
+  <Tokens name="Shiba" address="0x999" decimal="1" TokenNetwork="DogeNetwork"/>
+  <TokenNetworks Name="DogeNetwork" chainID="99" RPC="https://doge.org"/>
+</cryptoExchangePackage:cryptoExchange>
